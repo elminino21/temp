@@ -1,0 +1,8 @@
+---
+- name: Update web servers
+  hosts: all
+  tasks:
+  - name: stop previous image version
+    command: docker container rm -f trustcore 
+  - name: start new docker image
+    command: docker run -p 80:3000 --name trustcore -d 569779182597.dkr.ecr.us-east-1.amazonaws.com/trustscore:prod
